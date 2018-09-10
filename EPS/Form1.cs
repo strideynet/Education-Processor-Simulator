@@ -15,6 +15,13 @@ namespace EPS
         public Form1()
         {
             InitializeComponent();
+
+            var proc = new Processor.Processor();
+
+            while (true)
+            {
+                proc.Cycle();
+            }
         }
     }
 }

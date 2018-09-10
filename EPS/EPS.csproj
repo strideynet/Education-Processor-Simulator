@@ -51,6 +51,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="processor\Helper.cs" />
     <Compile Include="processor\IDrawable.cs" />
     <Compile Include="processor\Memory.cs" />
     <Compile Include="processor\Processor.cs" />
