@@ -51,8 +51,8 @@ namespace EPS.Processor
         private void Fetch()
         {
             UInt16 currentAddress = BitConverter.ToUInt16(_registers[12].Read(), 0);
-            Console.WriteLine("currentAddress {0}", currentAddress);
             byte[] instruction = _memory.ReadBytes(currentAddress, 2);
+            
 
             _registers[18].Write(instruction); // Read first 2 bytes into CIR
 
@@ -65,7 +65,6 @@ namespace EPS.Processor
             }
 
             _registers[12].Write(BitConverter.GetBytes(currentAddress + step)); // Increment PC
-            Console.WriteLine("steppedAddress {0}", currentAddress + step);
         }
 
         private void Decode()
