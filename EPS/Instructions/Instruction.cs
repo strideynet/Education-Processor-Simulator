@@ -20,6 +20,8 @@ namespace EPS.Instructions
         /// <returns>True when complete</returns>
         public bool Execute(Processor proc)
         {
+            if (currentStage == InstructionStages.Count) currentStage = 0;
+
             InstructionStages[currentStage](proc);
 
             currentStage++;
