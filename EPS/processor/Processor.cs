@@ -59,7 +59,7 @@ namespace EPS.Processor
             UInt16 step = 1;
 
             // We need to read the last 4 bits to determine how much to step the CIR by. 1111 signifies it is a 2 word instruction.
-            if ((instruction[1] & 15) == 15)
+            if ((instruction[1] & 0b0000_1111) == 0b0000_1111)
             {
                 step = 2;
             }
