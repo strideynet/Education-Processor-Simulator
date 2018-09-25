@@ -6,7 +6,7 @@ namespace EPS
 {
     public class Processor
     {
-        public InstructionSet InstructionSet;
+        public InstructionSet InstructionSet = new InstructionSet();
 
         public Bus AddressBus;
         public Bus SystemBus;
@@ -15,6 +15,9 @@ namespace EPS
         public Register PC;
         public Register MDR;
         public Register MAR;
+        public Register ACC;
+
+        public ALU ALU;
 
         public bool Fetching = true; // true for fetch, false for execute
         
@@ -24,23 +27,35 @@ namespace EPS
             {
                 proc =>
                 {
-                    proc.PC.SetFlag(BusFlags.Read);
+                    proc.PC.SetFlag(BusFlags.Read); // PC -> MAR
                     proc.MAR.SetFlag(BusFlags.Write);
                 },
                 proc =>
                 {
-                    proc.MDR.SetFlag(BusFlags.Read);
+                    proc.MDR.SetFlag(BusFlags.Read); // MDR -> CIR/ALU
                     proc.CIR.SetFlag(BusFlags.Write);
-                    proc.ALU.SetFlag(BusFlags.Write);
+
+                    proc.ALU.SetMode(ALUModes.Increment); // Increment value and store in ACC
                 },
                 proc =>
                 {
-                    proc.ALU.Mode(ALUModes.Increment);
-                    proc.ALU.SetFlag(BusFlags.Read);
+                    proc.ACC.SetFlag(BusFlags.Read); // ACC -> PC
                     proc.PC.SetFlag(BusFlags.Write);
                 }
             }
         };
+
+        public Processor()
+        {
+            SystemBus = new Bus(2);
+            
+            CIR = new Register(this, SystemBus, 4); // 2 Word instructions are possible. Hence 32 bit reg.
+            PC = new Register(this, SystemBus, 2);
+            MDR = new Register(this, SystemBus, 2);
+            MAR = new Register(this, SystemBus, 2);
+            
+            ACC = new Register(this, SystemBus, 2); // TODO: Ensure Accumulator is referencable by instructions as a User register.
+        }
 
 
         public event ClockRisingHandler ClockRising;

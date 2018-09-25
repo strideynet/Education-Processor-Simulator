@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
 
 namespace EPS.Components
 {
@@ -12,36 +11,43 @@ namespace EPS.Components
 
     public class Register
     {
-        private BusFlags flags;
-        private Processor proc;
+        private BusFlags _flags;
+        private Processor _proc;
+        private Bus _bus;
 
-        public Register(Processor proc)
+        private byte[] _value;
+
+        public Register(Processor proc, Bus bus, int length)
         {
-            this.proc = proc;
+            _proc = proc;
 
-            this.proc.ClockRising += ClockRisingHandler;
-            this.proc.ClockFalling += ClockFallingHandler;
+            _proc.ClockRising += ClockRisingHandler;
+            _proc.ClockFalling += ClockFallingHandler;
+
+            _bus = bus;
+            
+            _value = new byte[length];
         }
 
         public void SetFlag(BusFlags flag)
         {
-            flags = flags | flag;
+            _flags = _flags | flag;
         }
 
         private void ClockRisingHandler()
         {
-            if (flags.HasFlag(BusFlags.Write))
+            if (_flags.HasFlag(BusFlags.Read))
             {
-                // Set bus to my value
+                _bus.Write(_value);
             }
         }
 
         private void ClockFallingHandler()
         {
-            if (flags.HasFlag(BusFlags.Read))
+            if (_flags.HasFlag(BusFlags.Write))
             {
-                // Read bus into my value
-            }  
+                _value = _bus.Read();
+            }
         }
     }
 }
