@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using EPS.Components;
 using EPS.Instructions;
 
@@ -55,6 +57,8 @@ namespace EPS
             MAR = new Register(this, SystemBus, 2);
             
             ACC = new Register(this, SystemBus, 2); // TODO: Ensure Accumulator is referencable by instructions as a User register.
+            
+            ALU = new ALU(this, SystemBus, ACC);
         }
 
 
@@ -77,6 +81,12 @@ namespace EPS
             
             ClockRising(); // Write to Bus
             ClockFalling(); // Read from bus and operate
+            
+
+            Debug.WriteLine("Current PC:");
+            Debug.WriteLine(BitConverter.ToInt16(PC.Value, 0));
+            Debug.WriteLine("Cycle complete");
+            Debug.WriteLine("---------------------------------");
         }
     }
 }
