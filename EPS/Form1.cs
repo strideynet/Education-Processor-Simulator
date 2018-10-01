@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace EPS
 {
@@ -13,7 +12,6 @@ namespace EPS
 
             while (true)
             {
-                Debug.WriteLine("Cycle start");
                 proc.Clock();     
             }
         }

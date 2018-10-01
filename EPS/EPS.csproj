@@ -56,7 +56,8 @@
     </Compile>
     <Compile Include="Instructions\Instruction.cs" />
     <Compile Include="Instructions\InstructionSet.cs" />
-    <Compile Include="Processor.cs" />
+    <Compile Include="Processor\Processor.cs" />
+    <Compile Include="Processor\ProcessorDebug.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

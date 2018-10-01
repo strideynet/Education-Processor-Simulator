@@ -6,7 +6,8 @@ namespace EPS.Components
     public enum BusFlags : byte
     {
         Read = 0b0001,
-        Write = 0b0010
+        Write = 0b0010,
+        SecondWord = 0b0100
     }
 
     public class Register
@@ -31,7 +32,7 @@ namespace EPS.Components
             _proc.ClockFalling += ClockFallingHandler;
 
             _bus = bus;
-            
+
             _value = new byte[length];
         }
 

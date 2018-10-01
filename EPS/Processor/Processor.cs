@@ -6,7 +6,7 @@ using EPS.Instructions;
 
 namespace EPS
 {
-    public class Processor
+    public partial class Processor
     {
         public InstructionSet InstructionSet = new InstructionSet();
 
@@ -41,8 +41,10 @@ namespace EPS
                 },
                 proc =>
                 {
-                    proc.ACC.SetFlag(BusFlags.Read); // ACC -> PC
-                    proc.PC.SetFlag(BusFlags.Write);
+                    proc.ACC.SetFlag(BusFlags.Read); // ACC -> MAR
+                    proc.MAR.SetFlag(BusFlags.Write);
+                    
+                    proc.ALU.SetMode(ALUModes.Increment); // Increment value and store in ACC
                 }
             }
         };
@@ -82,11 +84,7 @@ namespace EPS
             ClockRising(); // Write to Bus
             ClockFalling(); // Read from bus and operate
             
-
-            Debug.WriteLine("Current PC:");
-            Debug.WriteLine(BitConverter.ToInt16(PC.Value, 0));
-            Debug.WriteLine("Cycle complete");
-            Debug.WriteLine("---------------------------------");
+            WriteState();
         }
     }
 }
