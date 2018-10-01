@@ -8,16 +8,16 @@ namespace EPS
     {
         public InstructionSet InstructionSet = new InstructionSet();
 
-        public Bus AddressBus;
-        public Bus SystemBus;
+        public readonly Bus AddressBus;
+        public readonly Bus SystemBus;
 
-        public Register CIR;
-        public Register PC;
-        public Register MDR;
-        public Register MAR;
-        public Register ACC;
+        public readonly Register CIR;
+        public readonly Register PC;
+        public readonly Register MDR;
+        public readonly Register MAR;
+        public readonly Register ACC;
 
-        public ALU ALU;
+        public readonly ALU ALU;
 
         public bool Fetching = true; // true for fetch, false for execute
         
@@ -75,8 +75,8 @@ namespace EPS
                 Fetching = true; // Eventually replace with execute. This will ensure a fetch loop.
             }
             
-            ClockRising();
-            ClockFalling();
+            ClockRising(); // Write to Bus
+            ClockFalling(); // Read from bus and operate
         }
     }
 }

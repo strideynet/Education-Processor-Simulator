@@ -44,7 +44,11 @@ namespace EPS.Components
         {
             if (_aluMode != ALUModes.None)
             {
-                throw new NotImplementedException();
+                var busValue = BitConverter.ToInt16(_bus.Read(), 0);
+                if (_aluMode == ALUModes.Increment)
+                {
+                    _acc.Value = BitConverter.GetBytes(busValue += 1);
+                }
             }
         }
 

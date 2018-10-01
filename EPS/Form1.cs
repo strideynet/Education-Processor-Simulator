@@ -8,7 +8,6 @@ namespace EPS
         public Form1()
         {
             InitializeComponent();
-                        
         }
     }
 }
