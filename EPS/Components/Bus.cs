@@ -4,6 +4,12 @@ namespace EPS.Components
     {
         private byte[] _value;
 
+        public byte[] Value
+        {
+            get => _value;
+            set => _value = value;
+        }
+        
         public Bus(int length)
         {
             _value = new byte[length];

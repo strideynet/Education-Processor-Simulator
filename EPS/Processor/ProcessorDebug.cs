@@ -16,6 +16,8 @@ namespace EPS
             Debug.WriteLine(BitConverter.ToInt16(MDR.Value, 0));
             Debug.WriteLine("Current ACC:");
             Debug.WriteLine(BitConverter.ToInt16(ACC.Value, 0));
+            Debug.WriteLine("Current BUS:");
+            Debug.WriteLine(BitConverter.ToInt16(SystemBus.Value, 0));
             Debug.WriteLine("Current Instruction:");
             Debug.WriteLine(Fetch.currentStage);
         }

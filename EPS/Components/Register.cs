@@ -55,6 +55,8 @@ namespace EPS.Components
             {
                 _value = _bus.Read();
             }
+
+            _flags = 0;
         }
     }
 }

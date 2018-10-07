@@ -61,6 +61,8 @@ namespace EPS.Components
                         break;
                 }
             }
+
+            _aluMode = 0;
         }
 
     }

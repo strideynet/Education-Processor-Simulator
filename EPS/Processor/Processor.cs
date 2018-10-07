@@ -27,35 +27,34 @@ namespace EPS
         {
             InstructionStages = new List<InstructionStage> //Microcode for the Fetch instruction
             {
-                proc =>
+                proc => //0
                 {
                     proc.PC.SetFlag(BusFlags.Read); // PC -> MAR
                     proc.MAR.SetFlag(BusFlags.Write);
+                    
+                    proc.ALU.SetMode(ALUModes.IncrementWord); // Increment value and store in ACC
                 },
-                proc =>
+                proc => //1
                 {
                     proc.MDR.SetFlag(BusFlags.Read); // MDR -> CIR/ALU
                     proc.CIR.SetFlag(BusFlags.Write);
-
-                    proc.ALU.SetMode(ALUModes.IncrementWord); // Increment value and store in ACC
                 },
-                proc =>
+                proc => //2
                 {
                     proc.ACC.SetFlag(BusFlags.Read); // ACC -> MAR
                     proc.MAR.SetFlag(BusFlags.Write);
                     
                     proc.ALU.SetMode(ALUModes.IncrementWord); // Increment value and store in ACC
                 },
-                proc =>
+                proc => //3
                 {
                     proc.MDR.SetFlag(BusFlags.Read); // MDR -> CIR Second word
                     proc.CIR.SetFlag(BusFlags.SecondWord);
                     proc.CIR.SetFlag(BusFlags.Write);
                 },
-                proc =>
+                proc => //4
                 {
                     proc.ACC.SetFlag(BusFlags.Read); // ACC -> PC. PC is now fully incremented 2 words.
-                    proc.PC.SetFlag(BusFlags.SecondWord);
                     proc.PC.SetFlag(BusFlags.Write);
                 }
             }
