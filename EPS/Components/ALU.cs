@@ -7,6 +7,7 @@ namespace EPS.Components
     {
         None,
         Increment,
+        IncrementWord,
         Decrement,
         Add,
         Subtract,
@@ -51,6 +52,9 @@ namespace EPS.Components
                 {
                     case ALUModes.Increment:
                         _acc.Value = BitConverter.GetBytes(busValue += 1);
+                        break;
+                    case ALUModes.IncrementWord:
+                        _acc.Value = BitConverter.GetBytes(busValue += 2);
                         break;
                     case ALUModes.Add:
                         _acc.Value = BitConverter.GetBytes(busValue + accValue);

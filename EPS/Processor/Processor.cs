@@ -25,7 +25,7 @@ namespace EPS
         
         private Instruction Fetch = new Instruction
         {
-            InstructionStages = new List<InstructionStage>
+            InstructionStages = new List<InstructionStage> //Microcode for the Fetch instruction
             {
                 proc =>
                 {
@@ -37,14 +37,26 @@ namespace EPS
                     proc.MDR.SetFlag(BusFlags.Read); // MDR -> CIR/ALU
                     proc.CIR.SetFlag(BusFlags.Write);
 
-                    proc.ALU.SetMode(ALUModes.Increment); // Increment value and store in ACC
+                    proc.ALU.SetMode(ALUModes.IncrementWord); // Increment value and store in ACC
                 },
                 proc =>
                 {
                     proc.ACC.SetFlag(BusFlags.Read); // ACC -> MAR
                     proc.MAR.SetFlag(BusFlags.Write);
                     
-                    proc.ALU.SetMode(ALUModes.Increment); // Increment value and store in ACC
+                    proc.ALU.SetMode(ALUModes.IncrementWord); // Increment value and store in ACC
+                },
+                proc =>
+                {
+                    proc.MDR.SetFlag(BusFlags.Read); // MDR -> CIR Second word
+                    proc.CIR.SetFlag(BusFlags.SecondWord);
+                    proc.CIR.SetFlag(BusFlags.Write);
+                },
+                proc =>
+                {
+                    proc.ACC.SetFlag(BusFlags.Read); // ACC -> PC. PC is now fully incremented 2 words.
+                    proc.PC.SetFlag(BusFlags.SecondWord);
+                    proc.PC.SetFlag(BusFlags.Write);
                 }
             }
         };
@@ -53,7 +65,7 @@ namespace EPS
         {
             SystemBus = new Bus(2);
             
-            CIR = new Register(this, SystemBus, 4); // 2 Word instructions are possible. Hence 32 bit reg.
+            CIR = new Register(this, SystemBus, 4); // Instructions have 2 words
             PC = new Register(this, SystemBus, 2);
             MDR = new Register(this, SystemBus, 2);
             MAR = new Register(this, SystemBus, 2);
