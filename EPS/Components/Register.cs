@@ -56,7 +56,7 @@ namespace EPS.Components
                 _value = _bus.Read();
             }
 
-            _flags = 0;
+            _flags = 0; // Reset flags.
         }
     }
 }

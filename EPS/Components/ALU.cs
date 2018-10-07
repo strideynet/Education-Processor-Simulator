@@ -62,7 +62,7 @@ namespace EPS.Components
                 }
             }
 
-            _aluMode = 0;
+            _aluMode = 0; // Reset flags.
         }
 
     }
