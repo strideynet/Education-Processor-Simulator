@@ -15,5 +15,15 @@ namespace EPS
                 proc.Clock();     
             }
         }
+
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

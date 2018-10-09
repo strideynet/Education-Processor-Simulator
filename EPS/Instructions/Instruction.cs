@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace EPS.Instructions
 {
-    public delegate void InstructionStage(Processor proc);
+    public delegate int? InstructionStage(Processor proc);
     public class Instruction
     {
-        public int currentStage;
+        public int currentStage = -1;
         public List<InstructionStage> InstructionStages = new List<InstructionStage>();
 
         public string Mnemonic = "";
@@ -20,12 +20,12 @@ namespace EPS.Instructions
         /// <returns>True when complete</returns>
         public bool Execute(Processor proc)
         {
-            InstructionStages[currentStage](proc);
+            currentStage = InstructionStages[currentStage](proc) ?? currentStage + 1; // Jump to specified microcode or just increment stage.
 
-            currentStage++;
-
-            if (currentStage == InstructionStages.Count) currentStage = 0;
-            return currentStage == InstructionStages.Count;
+            if (currentStage != InstructionStages.Count) return false;
+            
+            currentStage = 0; // If at end, reset. 
+            return true; // Signal system that an instruction is ready for execution.
         }
     }
 }

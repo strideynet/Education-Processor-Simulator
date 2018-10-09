@@ -9,6 +9,26 @@ namespace EPS.Instructions
 
         public InstructionSet()
         {
+            Instructions[0] = new Instruction
+            {
+                Mnemonic = "ADD",
+                Description = "Adds reg1 to reg2 or memory location and stores output in ACC.",
+                
+                InstructionStages = new List<InstructionStage> {
+                    proc => // 0: Check memory mode and begin fetch from memory if appropriate. If not read regb into ACC.
+                    {
+                        return null;
+                    },
+                    proc => // 1: Read from memory into ACC
+                    {
+                        return null;
+                    },
+                    proc => // 2: Trigger add operation
+                    {
+                        return null;
+                    }
+                }
+            };
         }
     }
 }

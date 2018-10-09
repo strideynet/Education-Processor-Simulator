@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows.Forms.VisualStyles;
 using EPS.Components;
 using EPS.Instructions;
 
@@ -33,11 +34,15 @@ namespace EPS
                     proc.MAR.SetFlag(BusFlags.Write);
                     
                     proc.ALU.SetMode(ALUModes.IncrementWord); // Increment value and store in ACC
+
+                    return null;
                 },
                 proc => //1
                 {
                     proc.MDR.SetFlag(BusFlags.Read); // MDR -> CIR/ALU
                     proc.CIR.SetFlag(BusFlags.Write);
+
+                    return null;
                 },
                 proc => //2
                 {
@@ -45,17 +50,23 @@ namespace EPS
                     proc.MAR.SetFlag(BusFlags.Write);
                     
                     proc.ALU.SetMode(ALUModes.IncrementWord); // Increment value and store in ACC
+
+                    return null;
                 },
                 proc => //3
                 {
                     proc.MDR.SetFlag(BusFlags.Read); // MDR -> CIR Second word
                     proc.CIR.SetFlag(BusFlags.SecondWord);
                     proc.CIR.SetFlag(BusFlags.Write);
+
+                    return null;
                 },
                 proc => //4
                 {
                     proc.ACC.SetFlag(BusFlags.Read); // ACC -> PC. PC is now fully incremented 2 words.
                     proc.PC.SetFlag(BusFlags.Write);
+
+                    return null;
                 }
             }
         };
@@ -82,14 +93,17 @@ namespace EPS
         public delegate void ClockFallingHandler();
 
         public void Clock()
-        {
+        {   
             if (Fetching)
             {
                 Fetching = !Fetch.Execute(this);
             }
             else
             {
-                Fetching = true; // Eventually replace with execute. This will ensure a fetch loop.
+                Instruction currentInstruction = null;
+                int instructionValue = CIR.Value[0] & 0b0011_1111;
+                
+                Fetching = currentInstruction.Execute(this);
             }
             
             ClockRising(); // Write to Bus
