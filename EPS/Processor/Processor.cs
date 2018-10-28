@@ -88,11 +88,10 @@ namespace EPS
 
         public event ClockRisingHandler ClockRising;
         public event ClockFallingHandler ClockFalling;
-
+        public event UpdateUIHandler UpdateUI;
+        
         public delegate void ClockRisingHandler();
         public delegate void ClockFallingHandler();
-
-        public event UpdateUIHandler UpdateUI;
         public delegate void UpdateUIHandler();
 
         public void Clock()
