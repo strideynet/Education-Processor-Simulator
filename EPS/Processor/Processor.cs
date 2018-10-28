@@ -92,6 +92,9 @@ namespace EPS
         public delegate void ClockRisingHandler();
         public delegate void ClockFallingHandler();
 
+        public event UpdateUIHandler UpdateUI;
+        public delegate void UpdateUIHandler();
+
         public void Clock()
         {   
             if (Fetching)
@@ -102,12 +105,15 @@ namespace EPS
             {
                 Instruction currentInstruction = null;
                 int instructionValue = CIR.Value[0] & 0b0011_1111;
+
+                currentInstruction = InstructionSet.Instructions[instructionValue];
                 
                 Fetching = currentInstruction.Execute(this);
             }
             
             ClockRising(); // Write to Bus
             ClockFalling(); // Read from bus and operate
+            UpdateUI();
             
             WriteState();
         }

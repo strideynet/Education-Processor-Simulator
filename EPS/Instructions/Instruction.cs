@@ -6,7 +6,7 @@ namespace EPS.Instructions
     public delegate int? InstructionStage(Processor proc);
     public class Instruction
     {
-        public int currentStage = -1;
+        public int currentStage = 0;
         public List<InstructionStage> InstructionStages = new List<InstructionStage>();
 
         public string Mnemonic = "";
