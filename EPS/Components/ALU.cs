@@ -64,6 +64,5 @@ namespace EPS.Components
 
             _aluMode = 0; // Reset flags.
         }
-
     }
 }
