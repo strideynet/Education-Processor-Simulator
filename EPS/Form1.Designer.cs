@@ -31,6 +31,8 @@
             this.btnClockStep = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblClockrate = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.lblFetch = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.lblMicrocode = new System.Windows.Forms.Label();
@@ -64,8 +66,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.txtClockRate = new System.Windows.Forms.NumericUpDown();
             this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.lblClockrate = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtClockRate)).BeginInit();
@@ -131,6 +131,25 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Information";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // lblClockrate
+            // 
+            this.lblClockrate.AutoSize = true;
+            this.lblClockrate.Location = new System.Drawing.Point(79, 241);
+            this.lblClockrate.Name = "lblClockrate";
+            this.lblClockrate.Size = new System.Drawing.Size(62, 13);
+            this.lblClockrate.TabIndex = 43;
+            this.lblClockrate.Text = "lblClockrate";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(6, 241);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(70, 13);
+            this.label24.TabIndex = 42;
+            this.label24.Text = "Clock Rate";
             // 
             // lblFetch
             // 
@@ -416,7 +435,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(192, 516);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "General Registers";
+            this.tabPage2.Text = "Load Program";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
@@ -443,25 +462,6 @@
             this.label23.Size = new System.Drawing.Size(93, 13);
             this.label23.TabIndex = 4;
             this.label23.Text = "Clock Rate (CPS):";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(6, 241);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(70, 13);
-            this.label24.TabIndex = 42;
-            this.label24.Text = "Clock Rate";
-            // 
-            // lblClockrate
-            // 
-            this.lblClockrate.AutoSize = true;
-            this.lblClockrate.Location = new System.Drawing.Point(79, 241);
-            this.lblClockrate.Name = "lblClockrate";
-            this.lblClockrate.Size = new System.Drawing.Size(62, 13);
-            this.lblClockrate.TabIndex = 43;
-            this.lblClockrate.Text = "lblClockrate";
             // 
             // Form1
             // 
