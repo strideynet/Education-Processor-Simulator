@@ -56,12 +56,39 @@
     </Compile>
     <Compile Include="Instructions\Instruction.cs" />
     <Compile Include="Instructions\InstructionSet.cs" />
+    <Compile Include="MemoryBank.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MemoryBank.Designer.cs">
+      <DependentUpon>MemoryBank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemoryBankCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MemoryBankCell.Designer.cs">
+      <DependentUpon>MemoryBankCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemoryBankRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MemoryBankRow.Designer.cs">
+      <DependentUpon>MemoryBankRow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Processor\Processor.cs" />
     <Compile Include="Processor\ProcessorDebug.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemoryBank.resx">
+      <DependentUpon>MemoryBank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemoryBankCell.resx">
+      <DependentUpon>MemoryBankCell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemoryBankRow.resx">
+      <DependentUpon>MemoryBankRow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

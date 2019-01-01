@@ -63,9 +63,16 @@
             this.lblPC = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.txtClockRate = new System.Windows.Forms.NumericUpDown();
             this.label23 = new System.Windows.Forms.Label();
+            this.btnStepPageForward = new System.Windows.Forms.Button();
+            this.btnStepPageBack = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.memoryBank1 = new EPS.MemoryBank();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtClockRate)).BeginInit();
@@ -85,7 +92,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 27);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(200, 542);
@@ -438,14 +445,6 @@
             this.tabPage2.Text = "Load Program";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1259, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // txtClockRate
             // 
             this.txtClockRate.Location = new System.Drawing.Point(214, 601);
@@ -463,17 +462,97 @@
             this.label23.TabIndex = 4;
             this.label23.Text = "Clock Rate (CPS):";
             // 
+            // btnStepPageForward
+            // 
+            this.btnStepPageForward.Location = new System.Drawing.Point(1209, 585);
+            this.btnStepPageForward.Name = "btnStepPageForward";
+            this.btnStepPageForward.Size = new System.Drawing.Size(87, 35);
+            this.btnStepPageForward.TabIndex = 6;
+            this.btnStepPageForward.Text = "->";
+            this.btnStepPageForward.UseVisualStyleBackColor = true;
+            this.btnStepPageForward.Click += new System.EventHandler(this.btnStepPageForward_Click);
+            // 
+            // btnStepPageBack
+            // 
+            this.btnStepPageBack.Location = new System.Drawing.Point(987, 585);
+            this.btnStepPageBack.Name = "btnStepPageBack";
+            this.btnStepPageBack.Size = new System.Drawing.Size(87, 35);
+            this.btnStepPageBack.TabIndex = 7;
+            this.btnStepPageBack.Text = "<-";
+            this.btnStepPageBack.UseVisualStyleBackColor = true;
+            this.btnStepPageBack.Click += new System.EventHandler(this.btnStepPageBack_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(1090, 579);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(100, 13);
+            this.label25.TabIndex = 8;
+            this.label25.Text = "Showing Addresses";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(1133, 592);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(13, 13);
+            this.label26.TabIndex = 9;
+            this.label26.Text = "0";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(161, 565);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(89, 13);
+            this.label27.TabIndex = 10;
+            this.label27.Text = "Clock Controls";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(1076, 565);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(133, 13);
+            this.label28.TabIndex = 11;
+            this.label28.Text = "Memory Bank Controls";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(1121, 608);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(43, 13);
+            this.label29.TabIndex = 12;
+            this.label29.Text = "111111";
+            // 
+            // memoryBank1
+            // 
+            this.memoryBank1.Location = new System.Drawing.Point(218, 34);
+            this.memoryBank1.Name = "memoryBank1";
+            this.memoryBank1.Size = new System.Drawing.Size(1080, 520);
+            this.memoryBank1.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1259, 633);
+            this.ClientSize = new System.Drawing.Size(1305, 633);
+            this.Controls.Add(this.memoryBank1);
+            this.Controls.Add(this.label29);
+            this.Controls.Add(this.label28);
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.btnStepPageBack);
+            this.Controls.Add(this.btnStepPageForward);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.txtClockRate);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnClockStep);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Educational Processor Simulator";
             this.tabControl1.ResumeLayout(false);
@@ -491,7 +570,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label lblPC;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblMDR;
@@ -525,6 +603,14 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label lblClockrate;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button btnStepPageForward;
+        private System.Windows.Forms.Button btnStepPageBack;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private MemoryBank memoryBank1;
     }
 }
 
