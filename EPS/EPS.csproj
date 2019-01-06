@@ -56,22 +56,28 @@
     </Compile>
     <Compile Include="Instructions\Instruction.cs" />
     <Compile Include="Instructions\InstructionSet.cs" />
-    <Compile Include="MemoryBank.cs">
+    <Compile Include="Controls\MemoryBank.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MemoryBank.Designer.cs">
+    <Compile Include="Controls\MemoryBank.Designer.cs">
       <DependentUpon>MemoryBank.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemoryBankCell.cs">
+    <Compile Include="Controls\MemoryBankCell.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MemoryBankCell.Designer.cs">
+    <Compile Include="Controls\MemoryBankCell.Designer.cs">
       <DependentUpon>MemoryBankCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemoryBankRow.cs">
+    <Compile Include="Controls\MemoryBankControls.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MemoryBankRow.Designer.cs">
+    <Compile Include="Controls\MemoryBankControls.Designer.cs">
+      <DependentUpon>MemoryBankControls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MemoryBankRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MemoryBankRow.Designer.cs">
       <DependentUpon>MemoryBankRow.cs</DependentUpon>
     </Compile>
     <Compile Include="Processor\Processor.cs" />
@@ -81,13 +87,16 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemoryBank.resx">
+    <EmbeddedResource Include="Controls\MemoryBank.resx">
       <DependentUpon>MemoryBank.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemoryBankCell.resx">
+    <EmbeddedResource Include="Controls\MemoryBankCell.resx">
       <DependentUpon>MemoryBankCell.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemoryBankRow.resx">
+    <EmbeddedResource Include="Controls\MemoryBankControls.resx">
+      <DependentUpon>MemoryBankControls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MemoryBankRow.resx">
       <DependentUpon>MemoryBankRow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -114,5 +123,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

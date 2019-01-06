@@ -20,10 +20,10 @@ namespace EPS
         {
             get => _memoryStartAddress;
 
-            set
+            private set
             {
                 _memoryStartAddress = value;
-                SetupMemoryBank();
+                Setup();
             }
         }
 
@@ -38,15 +38,14 @@ namespace EPS
                 Controls.Add(_rows[i]);
             }
 
-            SetupMemoryBank();
+            Setup();
         }
 
-
-        public void SetupMemoryBank()
+        public void Setup()
         {
             for (int i = 0; i < 8; i++)
             {
-                _rows[i].SetupMemoryRow(MemoryStartAddress + i * 8);
+                _rows[i].Setup(MemoryStartAddress + i * 8);
             }
         }
 

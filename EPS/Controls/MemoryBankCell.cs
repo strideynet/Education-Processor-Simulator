@@ -17,7 +17,7 @@ namespace EPS
             InitializeComponent();
         }
 
-        public void SetupMemoryBankCell(Int32 memoryAddress)
+        public void Setup(Int32 memoryAddress)
         {
             string memoryAddressString = Convert.ToString(memoryAddress, 2).PadLeft(3, '0');
             lblAddress.Text = "Address " + memoryAddressString.Substring(memoryAddressString.Length - 3);

@@ -18,6 +18,8 @@ namespace EPS
 
             timer = new Timer();
             timer.Tick += (sender, args) => { btnClockStep.PerformClick(); };
+
+            memoryBankControls.Setup(memoryBank);
         }
 
         private void ProcOnUpdateUI()
@@ -49,16 +51,6 @@ namespace EPS
 
             timer.Enabled = true;
             timer.Interval = (int) ((1 / txtClockRate.Value) * 1000);
-        }
-
-        private void btnStepPageForward_Click(object sender, EventArgs e)
-        {
-            memoryBank1.StepMemoryPage(1);
-        }
-
-        private void btnStepPageBack_Click(object sender, EventArgs e)
-        {
-            memoryBank1.StepMemoryPage(-1);
         }
     }
 }
