@@ -30,7 +30,7 @@ namespace EPS
             }
         }
 
-        public void Setup(Int32 memoryStart)
+        public void Setup(Int32 memoryStart, EPS.Components.MemoryBank memory = null)
         {
             lblAddressStart.Text = Convert.ToString(memoryStart, 2).PadLeft(16, '0');
 
@@ -38,7 +38,7 @@ namespace EPS
 
             for (int i = 0; i < 8; i++)
             {
-                _cells[i].Setup(memoryStart + i);
+                _cells[i].Setup(memoryStart + i, memory);
             }
         }
     }

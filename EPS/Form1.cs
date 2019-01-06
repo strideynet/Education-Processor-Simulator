@@ -20,6 +20,7 @@ namespace EPS
             timer.Tick += (sender, args) => { btnClockStep.PerformClick(); };
 
             memoryBankControls.Setup(memoryBank);
+            memoryBank.Setup(proc.MemoryBank);
         }
 
         private void ProcOnUpdateUI()

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Components\ALU.cs" />
     <Compile Include="Components\Bus.cs" />
+    <Compile Include="Components\MemoryBank.cs" />
     <Compile Include="Components\Register.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

@@ -41,11 +41,11 @@ namespace EPS
             Setup();
         }
 
-        public void Setup()
+        public void Setup(EPS.Components.MemoryBank memory = null)
         {
             for (int i = 0; i < 8; i++)
             {
-                _rows[i].Setup(MemoryStartAddress + i * 8);
+                _rows[i].Setup(MemoryStartAddress + i * 8, memory);
             }
         }
 

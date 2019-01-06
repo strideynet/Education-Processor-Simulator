@@ -22,6 +22,9 @@ namespace EPS
 
         public readonly ALU ALU;
 
+        public readonly Components.MemoryBank MemoryBank;
+
+
         public bool Fetching = true; // true for fetch, false for execute
         
         private Instruction Fetch = new Instruction
@@ -83,6 +86,8 @@ namespace EPS
             ACC = new Register(this, SystemBus, 2); // TODO: Ensure Accumulator is referencable by instructions as a User register.
             
             ALU = new ALU(this, SystemBus, ACC);
+
+            MemoryBank = new Components.MemoryBank(this, MDR, MAR);
         }
 
 
@@ -112,6 +117,7 @@ namespace EPS
             
             ClockRising(); // Write to Bus
             ClockFalling(); // Read from bus and operate
+            MemoryBank.ClockFallingHandler();
             UpdateUI();
             
             WriteState();

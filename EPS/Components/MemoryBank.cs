@@ -17,12 +17,12 @@ namespace EPS.Components
 
     public class MemoryBank
     {
-        private byte[] _data = new byte[65535];
+        private readonly byte[] _data = new byte[65535];
         private MemoryFlags _flags;
-        private Register _mdr;
-        private Register _mar;
+        private readonly Register _mdr;
+        private readonly Register _mar;
 
-        public MemoryBank(Register mdr, Register mar)
+        public MemoryBank(Processor proc, Register mdr, Register mar)
         {
             _mdr = mdr;
             _mar = mar;
@@ -33,23 +33,34 @@ namespace EPS.Components
             _flags = _flags | flag;
         }
 
-        private void ClockFallingHandler()
+        public void ClockFallingHandler()
         {
+            UInt16 marAddress = BitConverter.ToUInt16(_mar.Value, 0);
             if (_flags.HasFlag(MemoryFlags.Read))
             {
-                if (!_flags.HasFlag(MemoryFlags.TwoBytes))
-                    _mdr.Value = BitConverter.GetBytes(_data[BitConverter.ToUInt16(_mar.Value, 0)]);
+                _mdr.Value[0] = _data[marAddress];
+                if (_flags.HasFlag(MemoryFlags.TwoBytes))
+                    _mdr.Value[1] = _data[marAddress + 1];
                 else
-                {
-
-                }
+                    _mdr.Value[1] = 0; //Reset most significant byte. Don't want to copy previous value.
             } else if (_flags.HasFlag(MemoryFlags.Write))
             {
-                if (!_flags.HasFlag(MemoryFlags.TwoBytes))
-                    _data[BitConverter.ToUInt16(_mar.Value, 0)] = _mdr.Value[0]; //little endian system, first byte least significant
+                _data[marAddress] = _mdr.Value[0];
+                if (_flags.HasFlag(MemoryFlags.TwoBytes))
+                    _data[marAddress + 1] = _mdr.Value[1];
             }
 
             _flags = 0; // Reset flags.
+        }
+
+        public byte this[UInt16 addr]
+        {
+            get { return _data[addr]; }
+
+            set
+            {
+                _data[addr] = value;
+            }
         }
     }
 }

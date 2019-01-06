@@ -53,6 +53,7 @@
             this.txtBox.TabIndex = 2;
             this.txtBox.Text = "10101111";
             this.txtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBox.TextChanged += new System.EventHandler(this.ValueChanged);
             // 
             // lblAddress
             // 
