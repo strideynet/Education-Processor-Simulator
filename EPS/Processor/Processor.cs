@@ -10,8 +10,6 @@ namespace EPS
     public partial class Processor
     {
         public InstructionSet InstructionSet = new InstructionSet();
-
-        public readonly Bus AddressBus;
         public readonly Bus SystemBus;
 
         public readonly Register CIR;
@@ -38,6 +36,9 @@ namespace EPS
                     
                     proc.ALU.SetMode(ALUModes.IncrementWord); // Increment value and store in ACC
 
+                    proc.MemoryBank.SetFlag(MemoryFlags.Read);
+                    proc.MemoryBank.SetFlag(MemoryFlags.TwoBytes);
+
                     return null;
                 },
                 proc => //1
@@ -51,7 +52,10 @@ namespace EPS
                 {
                     proc.ACC.SetFlag(BusFlags.Read); // ACC -> MAR
                     proc.MAR.SetFlag(BusFlags.Write);
-                    
+
+                    proc.MemoryBank.SetFlag(MemoryFlags.Read);
+                    proc.MemoryBank.SetFlag(MemoryFlags.TwoBytes);
+
                     proc.ALU.SetMode(ALUModes.IncrementWord); // Increment value and store in ACC
 
                     return null;
@@ -107,12 +111,17 @@ namespace EPS
             }
             else
             {
-                Instruction currentInstruction = null;
                 int instructionValue = CIR.Value[0] & 0b0011_1111;
+                var currentInstruction = InstructionSet.Instructions[instructionValue];
 
-                currentInstruction = InstructionSet.Instructions[instructionValue];
-                
-                Fetching = currentInstruction.Execute(this);
+                if (currentInstruction != null)
+                {
+                    Fetching = currentInstruction.Execute(this);
+                }
+                else
+                {
+                    Fetching = true;
+                }
             }
             
             ClockRising(); // Write to Bus
