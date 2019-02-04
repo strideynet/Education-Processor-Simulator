@@ -15,7 +15,6 @@ namespace EPS.Components
         private BusFlags _flags;
         private Processor _proc;
         private Bus _bus;
-
         private byte[] _value;
 
         public byte[] Value
@@ -45,6 +44,8 @@ namespace EPS.Components
         {
             if (_flags.HasFlag(BusFlags.Read))
             {
+                var outputArray = new byte[2];
+                Array.Copy(_value, _flags.HasFlag(BusFlags.SecondWord) ? 2 : 0, outputArray, 0, 2);
                 _bus.Write(_value);
             }
         }
@@ -53,7 +54,8 @@ namespace EPS.Components
         {
             if (_flags.HasFlag(BusFlags.Write))
             {
-                _value = _bus.Read();
+                var inputArray = _bus.Read();
+                Array.Copy(inputArray, 0, _value, _flags.HasFlag(BusFlags.SecondWord) ? 2 : 0, 2);
             }
 
             _flags = 0; // Reset flags.

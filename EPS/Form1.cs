@@ -26,7 +26,7 @@ namespace EPS
         private void ProcOnUpdateUI()
         {
             lblPC.Text = BitConverter.ToInt16(proc.PC.Value, 0).ToString();
-            lblCIR.Text = BitConverter.ToInt16(proc.CIR.Value, 0).ToString();
+            lblCIR.Text = BitConverter.ToInt32(proc.CIR.Value, 0).ToString();
             lblMAR.Text = BitConverter.ToInt16(proc.MAR.Value, 0).ToString();
             lblMDR.Text = BitConverter.ToInt16(proc.MDR.Value, 0).ToString();
             lblACC.Text = BitConverter.ToInt16(proc.ACC.Value, 0).ToString();
