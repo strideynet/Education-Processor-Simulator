@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EPS.Instructions
 {
-    public delegate int? InstructionStage(Processor proc);
+    public delegate int? InstructionStage(Processor proc, ProcessorExecutionContext ctx);
     public class Instruction
     {
         public int currentStage = 0;
@@ -18,9 +18,10 @@ namespace EPS.Instructions
         /// Executes the substages of micro-code
         /// </summary>
         /// <returns>True when complete</returns>
-        public bool Execute(Processor proc)
+        public bool Execute(ProcessorExecutionContext ctx)
         {
-            currentStage = InstructionStages[currentStage](proc) ?? currentStage + 1; // Jump to specified microcode or just increment stage.
+            ctx.StageCount = InstructionStages.Count;
+            currentStage = InstructionStages[currentStage](ctx.Proc, ctx) ?? currentStage + 1; // Jump to specified microcode or just increment stage.
 
             if (currentStage != InstructionStages.Count) return false;
             

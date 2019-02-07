@@ -5,8 +5,26 @@ using System.Windows.Forms.VisualStyles;
 using EPS.Components;
 using EPS.Instructions;
 
-namespace EPS
-{
+namespace EPS {
+    public enum MemoryMode
+    {
+        Immediate,
+        Direct,
+        Register
+    }
+
+    public struct ProcessorExecutionContext {
+        public int FullInstruction;
+        public int Opcode;
+        public MemoryMode MemoryMode;
+        public Processor Proc;
+        public int StageCount;
+        public Register RegA;
+        public Register RegB;
+        public short? Immediate; //16bit
+        public ushort? MemoryAddress; //16bit unsigned
+    }
+
     public partial class Processor
     {
         public InstructionSet InstructionSet = new InstructionSet();
@@ -22,6 +40,7 @@ namespace EPS
 
         public readonly Components.MemoryBank MemoryBank;
 
+        public readonly Register[] RegisterBank = new Register[256];
 
         public bool Fetching = true; // true for fetch, false for execute
         
@@ -29,7 +48,7 @@ namespace EPS
         {
             InstructionStages = new List<InstructionStage> //Microcode for the Fetch instruction
             {
-                proc => //0
+                (proc, ctx) => //0
                 {
                     proc.PC.SetFlag(BusFlags.Read); // PC -> MAR
                     proc.MAR.SetFlag(BusFlags.Write);
@@ -41,14 +60,14 @@ namespace EPS
 
                     return null;
                 },
-                proc => //1
+                (proc, ctx) => //1
                 {
                     proc.MDR.SetFlag(BusFlags.Read); // MDR -> CIR/ALU
                     proc.CIR.SetFlag(BusFlags.Write);
 
                     return null;
                 },
-                proc => //2
+                (proc, ctx) => //2
                 {
                     proc.ACC.SetFlag(BusFlags.Read); // ACC -> MAR
                     proc.MAR.SetFlag(BusFlags.Write);
@@ -60,7 +79,7 @@ namespace EPS
 
                     return null;
                 },
-                proc => //3
+                (proc, ctx) => //3
                 {
                     proc.MDR.SetFlag(BusFlags.Read); // MDR -> CIR Second word
                     proc.CIR.SetFlag(BusFlags.SecondWord);
@@ -68,7 +87,7 @@ namespace EPS
 
                     return null;
                 },
-                proc => //4
+                (proc, ctx) => //4
                 {
                     proc.ACC.SetFlag(BusFlags.Read); // ACC -> PC. PC is now fully incremented 2 words.
                     proc.PC.SetFlag(BusFlags.Write);
@@ -91,6 +110,17 @@ namespace EPS
             
             ALU = new ALU(this, SystemBus, ACC);
 
+            for (int i = 0; i < 8; i++)
+            {
+                RegisterBank[i] = new Register(this, SystemBus, 2);
+            }
+            RegisterBank[0b1000_0000] = CIR;
+            RegisterBank[0b1000_0001] = PC;
+            RegisterBank[0b1000_0010] = MDR;
+            RegisterBank[0b1000_0011] = MAR;
+            RegisterBank[0b1000_0100] = ACC;
+
+
             MemoryBank = new Components.MemoryBank(this, MDR, MAR);
         }
 
@@ -104,24 +134,37 @@ namespace EPS
         public delegate void UpdateUIHandler();
 
         public void Clock()
-        {   
+        {
+            var ctx = new ProcessorExecutionContext
+            {
+                FullInstruction = CIR.Value[0],
+                Opcode = CIR.Value[0] & 0b0011_1111,
+                MemoryMode = (MemoryMode) ((CIR.Value[0] & 0b1100_0000) >> 6),
+                Proc = this,
+                RegA = RegisterBank[CIR.Value[1]]
+            };
+
+            if (ctx.MemoryMode == MemoryMode.Register)
+            {
+                ctx.RegB = RegisterBank[CIR.Value[1]];
+            } else if (ctx.MemoryMode == MemoryMode.Immediate)
+            {
+                ctx.Immediate = BitConverter.ToInt16(CIR.Value, 2);
+            } else if (ctx.MemoryMode == MemoryMode.Direct)
+            {
+                ctx.MemoryAddress = BitConverter.ToUInt16(CIR.Value, 2);
+            }
+
             if (Fetching)
             {
-                Fetching = !Fetch.Execute(this);
+                Fetching = !Fetch.Execute(ctx);
             }
             else
             {
-                int instructionValue = CIR.Value[0] & 0b0011_1111;
-                var currentInstruction = InstructionSet.Instructions[instructionValue];
-
-                if (currentInstruction != null)
-                {
-                    Fetching = currentInstruction.Execute(this);
-                }
-                else
-                {
-                    Fetching = true;
-                }
+                var currentInstruction = InstructionSet.Instructions[ctx.Opcode]
+                    ?? InstructionSet.Instructions[0];
+               
+                Fetching = currentInstruction.Execute(ctx);
             }
             
             ClockRising(); // Write to Bus

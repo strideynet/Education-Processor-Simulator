@@ -31,6 +31,10 @@
             this.btnClockStep = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblR7 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.lblR6 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.lblClockrate = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.lblFetch = new System.Windows.Forms.Label();
@@ -38,17 +42,17 @@
             this.lblMicrocode = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.lblR5 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblR4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblR3 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblR2 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lblR1 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.lblR0 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -66,8 +70,8 @@
             this.txtClockRate = new System.Windows.Forms.NumericUpDown();
             this.label23 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.memoryBank = new EPS.MemoryBank();
             this.memoryBankControls = new EPS.MemoryBankControls();
+            this.memoryBank = new EPS.MemoryBank();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtClockRate)).BeginInit();
@@ -95,6 +99,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lblR7);
+            this.tabPage1.Controls.Add(this.label29);
+            this.tabPage1.Controls.Add(this.lblR6);
+            this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Controls.Add(this.lblClockrate);
             this.tabPage1.Controls.Add(this.label24);
             this.tabPage1.Controls.Add(this.lblFetch);
@@ -102,17 +110,17 @@
             this.tabPage1.Controls.Add(this.lblMicrocode);
             this.tabPage1.Controls.Add(this.label22);
             this.tabPage1.Controls.Add(this.label20);
-            this.tabPage1.Controls.Add(this.label18);
+            this.tabPage1.Controls.Add(this.lblR5);
             this.tabPage1.Controls.Add(this.label19);
-            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.lblR4);
             this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.lblR3);
             this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.label12);
+            this.tabPage1.Controls.Add(this.lblR2);
             this.tabPage1.Controls.Add(this.label13);
-            this.tabPage1.Controls.Add(this.label14);
+            this.tabPage1.Controls.Add(this.lblR1);
             this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Controls.Add(this.label16);
+            this.tabPage1.Controls.Add(this.lblR0);
             this.tabPage1.Controls.Add(this.label17);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label6);
@@ -128,16 +136,54 @@
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage1.Size = new System.Drawing.Size(192, 516);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Information";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // lblR7
+            // 
+            this.lblR7.AutoSize = true;
+            this.lblR7.Location = new System.Drawing.Point(40, 198);
+            this.lblR7.Name = "lblR7";
+            this.lblR7.Size = new System.Drawing.Size(41, 13);
+            this.lblR7.TabIndex = 47;
+            this.lblR7.Text = "label28";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(6, 198);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(23, 13);
+            this.label29.TabIndex = 46;
+            this.label29.Text = "R7";
+            // 
+            // lblR6
+            // 
+            this.lblR6.AutoSize = true;
+            this.lblR6.Location = new System.Drawing.Point(40, 185);
+            this.lblR6.Name = "lblR6";
+            this.lblR6.Size = new System.Drawing.Size(41, 13);
+            this.lblR6.TabIndex = 45;
+            this.lblR6.Text = "label25";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(6, 185);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(23, 13);
+            this.label26.TabIndex = 44;
+            this.label26.Text = "R6";
+            // 
             // lblClockrate
             // 
             this.lblClockrate.AutoSize = true;
-            this.lblClockrate.Location = new System.Drawing.Point(79, 241);
+            this.lblClockrate.Location = new System.Drawing.Point(79, 267);
             this.lblClockrate.Name = "lblClockrate";
             this.lblClockrate.Size = new System.Drawing.Size(62, 13);
             this.lblClockrate.TabIndex = 43;
@@ -147,7 +193,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(6, 241);
+            this.label24.Location = new System.Drawing.Point(6, 267);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(70, 13);
             this.label24.TabIndex = 42;
@@ -156,7 +202,7 @@
             // lblFetch
             // 
             this.lblFetch.AutoSize = true;
-            this.lblFetch.Location = new System.Drawing.Point(79, 228);
+            this.lblFetch.Location = new System.Drawing.Point(79, 254);
             this.lblFetch.Name = "lblFetch";
             this.lblFetch.Size = new System.Drawing.Size(35, 13);
             this.lblFetch.TabIndex = 41;
@@ -166,7 +212,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(6, 228);
+            this.label21.Location = new System.Drawing.Point(6, 254);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(39, 13);
             this.label21.TabIndex = 40;
@@ -175,7 +221,7 @@
             // lblMicrocode
             // 
             this.lblMicrocode.AutoSize = true;
-            this.lblMicrocode.Location = new System.Drawing.Point(79, 215);
+            this.lblMicrocode.Location = new System.Drawing.Point(79, 241);
             this.lblMicrocode.Name = "lblMicrocode";
             this.lblMicrocode.Size = new System.Drawing.Size(35, 13);
             this.lblMicrocode.TabIndex = 39;
@@ -185,7 +231,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(6, 215);
+            this.label22.Location = new System.Drawing.Point(6, 241);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(66, 13);
             this.label22.TabIndex = 38;
@@ -195,20 +241,20 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(6, 202);
+            this.label20.Location = new System.Drawing.Point(6, 228);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(105, 13);
             this.label20.TabIndex = 37;
             this.label20.Text = "Other Information";
             // 
-            // label18
+            // lblR5
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(40, 172);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(41, 13);
-            this.label18.TabIndex = 36;
-            this.label18.Text = "label18";
+            this.lblR5.AutoSize = true;
+            this.lblR5.Location = new System.Drawing.Point(40, 172);
+            this.lblR5.Name = "lblR5";
+            this.lblR5.Size = new System.Drawing.Size(41, 13);
+            this.lblR5.TabIndex = 36;
+            this.lblR5.Text = "label18";
             // 
             // label19
             // 
@@ -218,16 +264,16 @@
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(23, 13);
             this.label19.TabIndex = 35;
-            this.label19.Text = "R6";
+            this.label19.Text = "R5";
             // 
-            // label8
+            // lblR4
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(40, 159);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 34;
-            this.label8.Text = "label8";
+            this.lblR4.AutoSize = true;
+            this.lblR4.Location = new System.Drawing.Point(40, 159);
+            this.lblR4.Name = "lblR4";
+            this.lblR4.Size = new System.Drawing.Size(35, 13);
+            this.lblR4.TabIndex = 34;
+            this.lblR4.Text = "label8";
             // 
             // label9
             // 
@@ -237,16 +283,16 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(23, 13);
             this.label9.TabIndex = 33;
-            this.label9.Text = "R5";
+            this.label9.Text = "R4";
             // 
-            // label10
+            // lblR3
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(40, 146);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 13);
-            this.label10.TabIndex = 32;
-            this.label10.Text = "label4";
+            this.lblR3.AutoSize = true;
+            this.lblR3.Location = new System.Drawing.Point(40, 146);
+            this.lblR3.Name = "lblR3";
+            this.lblR3.Size = new System.Drawing.Size(35, 13);
+            this.lblR3.TabIndex = 32;
+            this.lblR3.Text = "label4";
             // 
             // label11
             // 
@@ -256,16 +302,16 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(23, 13);
             this.label11.TabIndex = 31;
-            this.label11.Text = "R4";
+            this.label11.Text = "R3";
             // 
-            // label12
+            // lblR2
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(40, 133);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(35, 13);
-            this.label12.TabIndex = 30;
-            this.label12.Text = "label2";
+            this.lblR2.AutoSize = true;
+            this.lblR2.Location = new System.Drawing.Point(40, 133);
+            this.lblR2.Name = "lblR2";
+            this.lblR2.Size = new System.Drawing.Size(35, 13);
+            this.lblR2.TabIndex = 30;
+            this.lblR2.Text = "label2";
             // 
             // label13
             // 
@@ -275,16 +321,16 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(23, 13);
             this.label13.TabIndex = 29;
-            this.label13.Text = "R3";
+            this.label13.Text = "R2";
             // 
-            // label14
+            // lblR1
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(40, 120);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(35, 13);
-            this.label14.TabIndex = 28;
-            this.label14.Text = "label2";
+            this.lblR1.AutoSize = true;
+            this.lblR1.Location = new System.Drawing.Point(40, 120);
+            this.lblR1.Name = "lblR1";
+            this.lblR1.Size = new System.Drawing.Size(35, 13);
+            this.lblR1.TabIndex = 28;
+            this.lblR1.Text = "label2";
             // 
             // label15
             // 
@@ -294,16 +340,16 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(23, 13);
             this.label15.TabIndex = 27;
-            this.label15.Text = "R2";
+            this.label15.Text = "R1";
             // 
-            // label16
+            // lblR0
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(40, 107);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(35, 13);
-            this.label16.TabIndex = 26;
-            this.label16.Text = "label2";
+            this.lblR0.AutoSize = true;
+            this.lblR0.Location = new System.Drawing.Point(40, 107);
+            this.lblR0.Name = "lblR0";
+            this.lblR0.Size = new System.Drawing.Size(35, 13);
+            this.lblR0.TabIndex = 26;
+            this.lblR0.Text = "label2";
             // 
             // label17
             // 
@@ -313,7 +359,7 @@
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(23, 13);
             this.label17.TabIndex = 25;
-            this.label17.Text = "R1";
+            this.label17.Text = "R0";
             // 
             // label2
             // 
@@ -434,7 +480,7 @@
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage2.Size = new System.Drawing.Size(192, 516);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Load Program";
@@ -467,25 +513,27 @@
             this.label27.TabIndex = 10;
             this.label27.Text = "Clock Controls";
             // 
-            // memoryBank
-            // 
-            this.memoryBank.Location = new System.Drawing.Point(218, 34);
-            this.memoryBank.Name = "memoryBank";
-            this.memoryBank.Size = new System.Drawing.Size(1080, 520);
-            this.memoryBank.TabIndex = 13;
-            // 
             // memoryBankControls
             // 
-            this.memoryBankControls.Location = new System.Drawing.Point(984, 557);
+            this.memoryBankControls.Location = new System.Drawing.Point(985, 554);
+            this.memoryBankControls.Margin = new System.Windows.Forms.Padding(6);
             this.memoryBankControls.Name = "memoryBankControls";
             this.memoryBankControls.Size = new System.Drawing.Size(309, 66);
             this.memoryBankControls.TabIndex = 14;
+            // 
+            // memoryBank
+            // 
+            this.memoryBank.Location = new System.Drawing.Point(218, 34);
+            this.memoryBank.Margin = new System.Windows.Forms.Padding(6);
+            this.memoryBank.Name = "memoryBank";
+            this.memoryBank.Size = new System.Drawing.Size(1080, 520);
+            this.memoryBank.TabIndex = 13;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1305, 633);
+            this.ClientSize = new System.Drawing.Size(1300, 618);
             this.Controls.Add(this.memoryBankControls);
             this.Controls.Add(this.memoryBank);
             this.Controls.Add(this.label27);
@@ -494,8 +542,8 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnClockStep);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1321, 672);
-            this.MinimumSize = new System.Drawing.Size(1321, 672);
+            this.MaximumSize = new System.Drawing.Size(1316, 657);
+            this.MinimumSize = new System.Drawing.Size(967, 558);
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Educational Processor Simulator";
@@ -526,17 +574,17 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lblR5;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblR4;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblR3;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblR2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblR1;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblR0;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label lblMicrocode;
         private System.Windows.Forms.Label label22;
@@ -550,6 +598,10 @@
         private System.Windows.Forms.Label label27;
         private MemoryBank memoryBank;
         private MemoryBankControls memoryBankControls;
+        private System.Windows.Forms.Label lblR7;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label lblR6;
+        private System.Windows.Forms.Label label26;
     }
 }
 

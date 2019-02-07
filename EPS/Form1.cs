@@ -30,6 +30,16 @@ namespace EPS
             lblMAR.Text = BitConverter.ToInt16(proc.MAR.Value, 0).ToString();
             lblMDR.Text = BitConverter.ToInt16(proc.MDR.Value, 0).ToString();
             lblACC.Text = BitConverter.ToInt16(proc.ACC.Value, 0).ToString();
+
+            lblR0.Text = BitConverter.ToInt16(proc.RegisterBank[0].Value, 0).ToString();
+            lblR1.Text = BitConverter.ToInt16(proc.RegisterBank[1].Value, 0).ToString();
+            lblR2.Text = BitConverter.ToInt16(proc.RegisterBank[2].Value, 0).ToString();
+            lblR3.Text = BitConverter.ToInt16(proc.RegisterBank[3].Value, 0).ToString();
+            lblR4.Text = BitConverter.ToInt16(proc.RegisterBank[4].Value, 0).ToString();
+            lblR5.Text = BitConverter.ToInt16(proc.RegisterBank[5].Value, 0).ToString();
+            lblR6.Text = BitConverter.ToInt16(proc.RegisterBank[6].Value, 0).ToString();
+            lblR7.Text = BitConverter.ToInt16(proc.RegisterBank[7].Value, 0).ToString();
+ 
             lblMicrocode.Text = "filler";
             lblFetch.Text = proc.Fetching.ToString();
         }
