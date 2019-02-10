@@ -59,6 +59,9 @@ namespace EPS.Components
                     case ALUModes.Add:
                         _acc.Value = BitConverter.GetBytes(busValue + accValue);
                         break;
+                    case ALUModes.Subtract:
+                        _acc.Value = BitConverter.GetBytes(accValue - busValue);
+                        break;
                 }
             }
 
