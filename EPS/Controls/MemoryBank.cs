@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EPS
 {
     public partial class MemoryBank : UserControl
     {
-        private readonly MemoryBankRow[] _rows = new MemoryBankRow[8];
+        private readonly MemoryBankRow[] _rows = new MemoryBankRow[8]; // 8 rows of 8 gives 64 bytes per page
 
-        private Int32 _memoryStartAddress;
+        private Int32 _memoryStartAddress; // Address to start memorybank on.
 
         public Int32 MemoryStartAddress
         {
@@ -23,7 +16,7 @@ namespace EPS
             private set
             {
                 _memoryStartAddress = value;
-                Setup();
+                Setup(); // Trigger setup on change of page. This setup propoagates down to the individual cell.
             }
         }
 
@@ -33,7 +26,7 @@ namespace EPS
 
             for (int i = 0; i < 8; i++)
             {
-                _rows[i] = new MemoryBankRow {Location = new System.Drawing.Point(0, i * 65)};
+                _rows[i] = new MemoryBankRow {Location = new System.Drawing.Point(0, i * 65)}; // Setup rows and positions programatically.
 
                 Controls.Add(_rows[i]);
             }
@@ -45,11 +38,11 @@ namespace EPS
         {
             for (int i = 0; i < 8; i++)
             {
-                _rows[i].Setup(MemoryStartAddress + i * 8, memory);
+                _rows[i].Setup(MemoryStartAddress + i * 8, memory); // Trigger setup propagation.
             }
         }
 
-        public void StepMemoryPage(int pages)
+        public void StepMemoryPage(int pages) // Helper method to ensure steps are equal 64 byte chunks.
         {
             MemoryStartAddress += 64 * pages;
         }

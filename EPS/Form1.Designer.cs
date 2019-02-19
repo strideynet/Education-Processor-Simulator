@@ -136,7 +136,7 @@
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(192, 516);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Information";
@@ -183,17 +183,17 @@
             // lblClockrate
             // 
             this.lblClockrate.AutoSize = true;
-            this.lblClockrate.Location = new System.Drawing.Point(79, 267);
+            this.lblClockrate.Location = new System.Drawing.Point(79, 257);
             this.lblClockrate.Name = "lblClockrate";
-            this.lblClockrate.Size = new System.Drawing.Size(62, 13);
+            this.lblClockrate.Size = new System.Drawing.Size(13, 13);
             this.lblClockrate.TabIndex = 43;
-            this.lblClockrate.Text = "lblClockrate";
+            this.lblClockrate.Text = "0";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(6, 267);
+            this.label24.Location = new System.Drawing.Point(6, 257);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(70, 13);
             this.label24.TabIndex = 42;
@@ -202,17 +202,17 @@
             // lblFetch
             // 
             this.lblFetch.AutoSize = true;
-            this.lblFetch.Location = new System.Drawing.Point(79, 254);
+            this.lblFetch.Location = new System.Drawing.Point(79, 244);
             this.lblFetch.Name = "lblFetch";
-            this.lblFetch.Size = new System.Drawing.Size(35, 13);
+            this.lblFetch.Size = new System.Drawing.Size(25, 13);
             this.lblFetch.TabIndex = 41;
-            this.lblFetch.Text = "label2";
+            this.lblFetch.Text = "true";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(6, 254);
+            this.label21.Location = new System.Drawing.Point(6, 244);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(39, 13);
             this.label21.TabIndex = 40;
@@ -221,11 +221,10 @@
             // lblMicrocode
             // 
             this.lblMicrocode.AutoSize = true;
-            this.lblMicrocode.Location = new System.Drawing.Point(79, 241);
+            this.lblMicrocode.Location = new System.Drawing.Point(79, 231);
             this.lblMicrocode.Name = "lblMicrocode";
-            this.lblMicrocode.Size = new System.Drawing.Size(35, 13);
+            this.lblMicrocode.Size = new System.Drawing.Size(0, 13);
             this.lblMicrocode.TabIndex = 39;
-            this.lblMicrocode.Text = "label2";
             // 
             // label22
             // 
@@ -233,9 +232,8 @@
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(6, 241);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(66, 13);
+            this.label22.Size = new System.Drawing.Size(0, 13);
             this.label22.TabIndex = 38;
-            this.label22.Text = "Microcode";
             // 
             // label20
             // 
@@ -480,7 +478,7 @@
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(192, 516);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Load Program";

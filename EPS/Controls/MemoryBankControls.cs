@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EPS
@@ -27,7 +20,7 @@ namespace EPS
 
         private void StepBack(object sender, EventArgs e)
         {
-            _memoryBank.StepMemoryPage(-1);
+            _memoryBank.StepMemoryPage(-1); // Use page step helper to ensure pages remain equal size.
             UpdateLabels();
         }
 
@@ -39,10 +32,10 @@ namespace EPS
 
         private void UpdateLabels()
         {
-            lblMemoryStart.Text = Convert.ToString(_memoryBank.MemoryStartAddress, 2).PadLeft(16, '0');
+            lblMemoryStart.Text = Convert.ToString(_memoryBank.MemoryStartAddress, 2).PadLeft(16, '0'); // Binary formatting to 16 bit number even if shorter.
             lblMemoryEnd.Text = Convert.ToString(_memoryBank.MemoryStartAddress + 63, 2).PadLeft(16, '0');
 
-            btnStepPageBack.Enabled = !(_memoryBank.MemoryStartAddress - 64 < 0);
+            btnStepPageBack.Enabled = !(_memoryBank.MemoryStartAddress - 64 < 0); // Prevent user overflowing.
             btnStepPageForward.Enabled = !(_memoryBank.MemoryStartAddress + 127 > 65535); // Ensure MemoryEndAddress will not overflow
         }
     }

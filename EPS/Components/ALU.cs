@@ -3,6 +3,7 @@ using System.Windows.Forms;
 
 namespace EPS.Components
 {
+    // Possible ALU operation modes.
     public enum ALUModes: byte
     {
         None,
@@ -43,7 +44,7 @@ namespace EPS.Components
         /// </summary>
         private void ClockFallingHandler()
         {
-            if (_aluMode != ALUModes.None)
+            if (_aluMode != ALUModes.None) // save execution time in case of no op.
             {
                 var busValue = BitConverter.ToInt16(_bus.Read(), 0);
                 var accValue = BitConverter.ToInt16(_acc.Value, 0);

@@ -2,6 +2,7 @@ using System;
 
 namespace EPS.Components
 {
+    // Possible operation flags for register.
     [Flags]
     public enum BusFlags : byte
     {
@@ -15,6 +16,8 @@ namespace EPS.Components
         private BusFlags _flags;
         private Processor _proc;
         private Bus _bus;
+
+        // Setup internal value and getter/setter protection.
         private byte[] _value;
 
         public byte[] Value
@@ -27,7 +30,7 @@ namespace EPS.Components
         {
             _proc = proc;
 
-            _proc.ClockRising += ClockRisingHandler;
+            _proc.ClockRising += ClockRisingHandler; // Hook onto events.
             _proc.ClockFalling += ClockFallingHandler;
 
             _bus = bus;
@@ -46,7 +49,7 @@ namespace EPS.Components
             {
                 var outputArray = new byte[2];
                 Array.Copy(_value, _flags.HasFlag(BusFlags.SecondWord) ? 2 : 0, outputArray, 0, 2);
-                _bus.Write(_value);
+                _bus.Write(outputArray);
             }
         }
 

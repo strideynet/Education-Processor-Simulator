@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EPS
 {
     public partial class MemoryBankRow : UserControl
     {
-        private readonly MemoryBankCell[] _cells = new MemoryBankCell[8];
+        private readonly MemoryBankCell[] _cells = new MemoryBankCell[8]; // 7 cells of 1 byte = 8 bytes per row.
 
         public MemoryBankRow()
         {
@@ -23,7 +15,7 @@ namespace EPS
             {
                 _cells[i] = new MemoryBankCell
                 {
-                    Location = new System.Drawing.Point((i * 120) + 120, 0)
+                    Location = new System.Drawing.Point((i * 120) + 120, 0) // Setup positions programtically
                 };
 
                 Controls.Add(_cells[i]);
@@ -32,13 +24,13 @@ namespace EPS
 
         public void Setup(Int32 memoryStart, EPS.Components.MemoryBank memory = null)
         {
-            lblAddressStart.Text = Convert.ToString(memoryStart, 2).PadLeft(16, '0');
+            lblAddressStart.Text = Convert.ToString(memoryStart, 2).PadLeft(16, '0'); // String formatting for binary style to 16 bits.
 
             lblAddressEnd.Text = Convert.ToString(memoryStart + 7, 2).PadLeft(16, '0');
 
             for (int i = 0; i < 8; i++)
             {
-                _cells[i].Setup(memoryStart + i, memory);
+                _cells[i].Setup(memoryStart + i, memory); // Propogate setup to cells.a
             }
         }
     }

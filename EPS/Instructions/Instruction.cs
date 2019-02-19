@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace EPS.Instructions
 {
-    public delegate int? InstructionStage(Processor proc, ProcessorExecutionContext ctx);
+    public delegate int? InstructionStage(Processor proc, ProcessorExecutionContext ctx); // Setup delgate for InstructionStage anonynmous functions.
     public class Instruction
     {
-        public int currentStage = 0;
-        public List<InstructionStage> InstructionStages = new List<InstructionStage>();
+        public int currentStage = 0; // current stage of execution of instruction.
+        public List<InstructionStage> InstructionStages = new List<InstructionStage>(); // All stages of execution.
 
-        public string Mnemonic = "";
-        public string Description = "";
+        public string Mnemonic = ""; // Short code, i.e LDA
+        public string Description = ""; // Longer explanation for user.
 
         public byte OpCode;
         

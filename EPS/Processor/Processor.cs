@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Windows.Forms.VisualStyles;
 using EPS.Components;
 using EPS.Instructions;
 
 namespace EPS {
+    // Possible acceptable memory modes.
     public enum MemoryMode
     {
         Immediate,
@@ -13,6 +12,7 @@ namespace EPS {
         Register
     }
 
+    // Provided to instructions as context for the execution.
     public struct ProcessorExecutionContext {
         public int FullInstruction;
         public int Opcode;
@@ -112,9 +112,9 @@ namespace EPS {
 
             for (int i = 0; i < 8; i++)
             {
-                RegisterBank[i] = new Register(this, SystemBus, 2);
+                RegisterBank[i] = new Register(this, SystemBus, 2); // Generate general registers.
             }
-            RegisterBank[0b1000_0000] = CIR;
+            RegisterBank[0b1000_0000] = CIR; // Set special registers.
             RegisterBank[0b1000_0001] = PC;
             RegisterBank[0b1000_0010] = MDR;
             RegisterBank[0b1000_0011] = MAR;
@@ -125,6 +125,7 @@ namespace EPS {
         }
 
 
+        // Setup events and delegates.
         public event ClockRisingHandler ClockRising;
         public event ClockFallingHandler ClockFalling;
         public event UpdateUIHandler UpdateUI;
@@ -135,7 +136,7 @@ namespace EPS {
 
         public void Clock()
         {
-            var ctx = new ProcessorExecutionContext
+            var ctx = new ProcessorExecutionContext // Setup execution context
             {
                 FullInstruction = CIR.Value[0],
                 Opcode = CIR.Value[0] & 0b0011_1111,
@@ -144,9 +145,10 @@ namespace EPS {
                 RegA = RegisterBank[CIR.Value[1]]
             };
 
+            // Setup execution context for specific memorymode.
             if (ctx.MemoryMode == MemoryMode.Register)
             {
-                ctx.RegB = RegisterBank[CIR.Value[1]];
+                ctx.RegB = RegisterBank[CIR.Value[2]];
             } else if (ctx.MemoryMode == MemoryMode.Immediate)
             {
                 ctx.Immediate = BitConverter.ToInt16(CIR.Value, 2);
@@ -155,6 +157,7 @@ namespace EPS {
                 ctx.MemoryAddress = BitConverter.ToUInt16(CIR.Value, 2);
             }
 
+            // Main execution logic.
             if (Fetching)
             {
                 Fetching = !Fetch.Execute(ctx);
@@ -162,7 +165,7 @@ namespace EPS {
             else
             {
                 var currentInstruction = InstructionSet.Instructions[ctx.Opcode]
-                    ?? InstructionSet.Instructions[0];
+                    ?? InstructionSet.Instructions[0]; //Fallback to NOP if instruction does not exist.
                
                 Fetching = currentInstruction.Execute(ctx);
             }
